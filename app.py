@@ -14,7 +14,6 @@ app.register_blueprint(blueprint_departures, url_prefix='/departures')
 app.register_blueprint(blueprint_tickets, url_prefix='/tickets')
 app.register_blueprint(blueprint_auth, url_prefix='/auth')
 
-
 @app.route('/')
 def departures():
     return render_template('departures.html')

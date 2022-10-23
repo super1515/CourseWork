@@ -2,7 +2,7 @@
 <html lang="en">
 <header>
     <meta charset="UTF-8">
-    <link href="/static/styles/body.css" rel="stylesheet" type="text/css">
+    <link href="/static/styles/base.css" rel="stylesheet" type="text/css">
     {% block head %}{% endblock %}
     <div class="logo">
         <a href="/">
@@ -17,8 +17,8 @@
             <li><a href="/contacts">Контакты</a></li>
         </ul>
     </div>
-    <div class="auth">
-        <a href="/auth" {% block auth_active %} {% endblock %} >Войти</a>
+    <div class="auth" >
+        <a href="/auth" align="right" {% block auth_active %}{% endblock %} >Войти</a>
     </div>
 </header>
 <body>

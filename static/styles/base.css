@@ -37,6 +37,12 @@ header {
   border-radius: 8px;
 }
 
+.auth .active {
+  color: #fff;
+  background-color: #ff3d00;
+  border-radius: 8px;
+}
+
 .menu ul {
   display: flex;
   flex-flow: row nowrap;
@@ -61,8 +67,12 @@ header {
 .auth {
   font-size: 20px;
   line-height: 24px;
+  padding: 8px 10px;
 }
 .auth a {
   color: #000;
   text-decoration: none;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 8px 10px;
 }
