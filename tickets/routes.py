@@ -12,4 +12,4 @@ blueprint_tickets = Blueprint('blueprint_tickets', __name__, template_folder='te
 
 @blueprint_tickets.route('/')
 def tickets():
-    return render_template('tickets.html')
+	return render_template('tickets.html')

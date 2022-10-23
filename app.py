@@ -3,6 +3,8 @@ import json
 from flask import Flask, render_template, session
 from departures.routes import blueprint_departures
 from tickets.routes import blueprint_tickets
+from auth.routes import blueprint_auth
+
 app = Flask(__name__,
             static_url_path='/static')
 app.secret_key = 'SuperKey'
@@ -10,6 +12,7 @@ app.secret_key = 'SuperKey'
 app.config['db_config'] = json.load(open('configs/db.json'))
 app.register_blueprint(blueprint_departures, url_prefix='/departures')
 app.register_blueprint(blueprint_tickets, url_prefix='/tickets')
+app.register_blueprint(blueprint_auth, url_prefix='/auth')
 
 
 @app.route('/')
