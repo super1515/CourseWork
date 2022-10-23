@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<header>
+    <meta charset="UTF-8">
+    <link href="/static/styles/body.css" rel="stylesheet" type="text/css">
+    {% block head %}{% endblock %}
+    <div class="logo">
+        <a href="/">
+            <img src="/static/img/plane.png" width="60" height="60px"/>
+        </a>
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="/" {% block departures_active %}{% endblock %}>Рейсы</a></li>
+            <li><a href="/tickets" {% block tickets_active %}{% endblock %}>Проверка билетов</a></li>
+            <li><a href="/blog">Блог</a></li>
+            <li><a href="/contacts">Контакты</a></li>
+        </ul>
+    </div>
+    <div class="auth">
+        <a href="tel:88004000500">8 800 4000 500</a>
+    </div>
+</header>
+<body>
+{% block body %}{% endblock %}
+</body>
+</html>
