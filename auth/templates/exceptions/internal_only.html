@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block head %}
+<link href="/static/styles/auth.css" rel="stylesheet" type="text/css">
+<title>Ошибка доступа</title>
+
+{% endblock %}
+{% block auth_active %} class="active" {% endblock %}
+{% block body %}
+<div class="authHolder">
+    <main id="main-holder">
+        <h3 id="login-header">Вы не имеете доступ к этой странице</h3>
+    </main>
+</div>
+{% endblock %}

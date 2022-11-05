@@ -1,6 +1,40 @@
 {% extends 'base.html' %}
-{% block head %} <title>Рейсы</title> {% endblock %}
+{% block head %}
+<link href="/static/styles/departures.css" rel="stylesheet" type="text/css">
+<title>Рейсы</title>
+{% endblock %}
 {% block departures_active %} class="active" {% endblock %}
 {% block body %}
-<p> Содержимое </p>
+
+<div class="departuresHolder">
+    <main id="main-holder">
+            <table class="table_price">
+                <caption>Билеты</caption>
+                <tr>
+                    <th>Номер рейса</th>
+                    <td>Откуда</td>
+                    <td>Куда</td>
+                    <td>Дата и время вылета</td>
+                    <td>Дата и время прилёта</td>
+                    <th colspan="5">Цена билета</th>
+                </tr>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item["flightNumber"] }}</td>
+                    <td>{{ item["departurePoint"] }}</td>
+                    <td>{{ item["arrivalPoint"] }}</td>
+                    <td>{{ item["departureDate"] }} {{ item["departureTime"] }}</td>
+                    <td>{{ item["arrivalDate"] }} {{ item["arrivalTime"] }}</td>
+                    <td>{{ item["baseCost"] }} Р</td>
+                    <td>
+                        <a href="{{ url_for('blueprint_departures.ticket_buy', flightNumber=item['flightNumber'], baseCost=item['baseCost']) }}" >
+                            Приобрести
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </ul>
+    </main>
+</div>
 {% endblock %}

@@ -11,14 +11,31 @@
     </div>
     <div class="menu">
         <ul>
-            <li><a href="/" {% block departures_active %}{% endblock %}>Рейсы</a></li>
-            <li><a href="/tickets" {% block tickets_active %}{% endblock %}>Проверка билетов</a></li>
-            <li><a href="/blog">Блог</a></li>
-            <li><a href="/contacts">Контакты</a></li>
+            <li><a href="{{ url_for('blueprint_departures.get_departures') }}" {% block departures_active %}{% endblock
+                   %}>Рейсы</a></li>
+            <li><a href="{{ url_for('blueprint_tickets.tickets') }}" {% block check_active %}{% endblock %}>Проверка билетов</a></li>
+            {% if session['user_group'] == 'Admin' %}
+            <li><a href="{{ url_for('blueprint_query.query') }}" {% block query_active %}{% endblock %}>Запросы</a></li>
+            {% endif %}
+            {% if session['user_group'] == 'Accountant' %}
+            <li><a href="{{ url_for('blueprint_report.report_create') }}" {% block report_create_active %}{% endblock %}>Создание отчетов</a></li>
+            {% endif %}
+            {% if session['user_group'] == 'Admin' %}
+            <li><a href="{{ url_for('blueprint_report.report_view') }}" {% block report_view_active %}{% endblock %}>Просмотр отчетов</a></li>
+            {% endif %}
+            {% if session['user_group'] == 'Seller' %}
+            <li><a href="{{ url_for('blueprint_tickets.tickets') }}" {% block tickets_active %}{% endblock %}>Билеты</a></li>
+            {% endif %}
         </ul>
     </div>
-    <div class="auth" >
-        <a href="/auth" align="right" {% block auth_active %}{% endblock %} >Войти</a>
+    <h align="right"> {{session['user_group']}}</h>
+    <div class="auth">
+
+        {% if session['user_group'] %}
+        <a href="/unauth" align="right">Выйти</a>
+        {% else %}
+        <a href="/auth" align="right" {% block auth_active %}{% endblock %}>Войти</a>
+        {% endif %}
     </div>
 </header>
 <body>

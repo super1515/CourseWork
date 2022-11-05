@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block head %}
+<link href="/static/styles/auth.css" rel="stylesheet" type="text/css">
+<title>Оформление билетов</title>
+{% endblock %}
+{% block departures_active %} class="active" {% endblock %}
+{% block body %}
+
+<div class="authHolder">
+    <main id="main-holder">
+        <h1 id="login-header">Оформление билетов</h1>
+        <form id="login-form">
+            <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Полное имя">
+            <input name="password" id="password-field" class="login-form-field" placeholder="Серия и номер паспорта">
+            <h3 class="login-form-field"> Номер рейса: {{ flightNumber }}</h3>
+            <h3 class="login-form-field"> Цена: {{ baseCost }}</h3>
+            <input type="submit" value="Приобрести" id="login-form-submit">
+        </form>
+    </main>
+</div>
+{% endblock %}

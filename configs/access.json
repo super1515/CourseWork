@@ -1,0 +1,12 @@
+{
+  "Admin": [
+    "blueprint_query",
+    "blueprint_report.report_view"
+  ],
+  "Seller": [
+    "blueprint_tickets"
+  ],
+  "Accountant": [
+    "blueprint_report.report_create"
+  ]
+}

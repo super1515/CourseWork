@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Запрос №4</title>
+<link href="/static/styles/query.css" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block query_active %} class="active" {% endblock %}
+{% block body %}
+<div class="queryHolder">
+    <main id="main-holder">
+        {% if items %}
+        {% if items != 'None' %}
+        <h3> Выполнен запрос </h3>
+        <table class="table_price">
+            <caption>Отчет</caption>
+            <tr>
+                <th>Аэропорт вылета</th>
+                <td>Аэропорт прилета</td>
+                <td>Общее количество проданых билетов</td>
+                <td>Общая цена билетов</td>
+            </tr>
+            {% for item in items %}
+            <tr>
+                <td>{{ item["departurePoint"] }}</td>
+                <td>{{ item["arrivalPoint"] }}</td>
+                <td>{{ item["COUNT(cost)"] }}</td>
+                <td>{{ item["SUM(cost)"] }} Р</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <h3> Запрос выполнен, результатов нет </h3>
+        {% endif %}
+        {% else %}
+        <ul>
+            <h3> Отчет о продаже билетов в определенные даты. </h3>
+            <form method="POST" action="">
+                От<input type="date" name="date_start" placeholder="От">
+                До<input type="date" name="date_end" placeholder="До">
+                <input type="submit" value="Выполнить запрос">
+            </form>
+        </ul>
+        {% endif %}
+        <li><a href="{{ url_for('blueprint_query.query') }}">Назад</a></li>
+    </main>
+
+</div>
+{% endblock %}

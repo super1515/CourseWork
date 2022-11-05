@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Запросы</title>
+<link href="/static/styles/query.css" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block query_active %} class="active" {% endblock %}
+{% block body %}
+<div class="queryHolder">
+    <main id="main-holder">
+        <ul>
+            {% if session['user_group'] %}
+            <li><a href="{{ url_for('blueprint_query.query_1') }}">Запрос №1</a></li>
+            <li><a href="{{ url_for('blueprint_query.query_2') }}">Запрос №2</a></li>
+            <li><a href="{{ url_for('blueprint_query.query_3') }}">Запрос №3</a></li>
+            <li><a href="{{ url_for('blueprint_query.query_4') }}">Запрос №4</a></li>
+            {% endif %}
+        </ul>
+    </main>
+</div>
+{% endblock %}

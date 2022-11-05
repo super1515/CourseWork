@@ -12,15 +12,16 @@
     <div class="fingerprint">
             <img src="/static/img/fingerprint.svg" width="60" height="60px"/>
     </div>
+    {% if message %}
     <div id="login-error-msg-holder">
-      <p id="login-error-msg">Неверный логин <span id="error-msg-second-line">и/или пароль</span></p>
+      <p id="login-error-msg">{{ message }} <span id="error-msg-second-line"></span></p>
     </div>
-
-    <form id="login-form">
-      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Логин">
-      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Пароль">
+    {% endif %}
+    <form method="POST" action=""  id="login-form">
+      <input type="text" id="login" name="login" class="login-form-field" placeholder="Логин">
+      <input type="password" name="password" id="password" class="login-form-field" placeholder="Пароль">
       <input type="submit" value="Войти" id="login-form-submit">
     </form>
-</div>
-  </main>
+      </main>
+    </div>
 {% endblock %}

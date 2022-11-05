@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Запрос №1</title>
+<link href="/static/styles/query.css" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block query_active %} class="active" {% endblock %}
+{% block body %}
+<div class="queryHolder">
+    <main id="main-holder">
+        {% if items %}
+        {% if items != 'None' %}
+        <h3> Выполнен запрос </h3>
+        <table class="table_price">
+            <caption>Билеты</caption>
+            <tr>
+                <th>Номер рейса</th>
+                <td>Откуда</td>
+                <td>Куда</td>
+                <td>Дата и время вылета</td>
+                <td>Дата и время прилёта</td>
+                <th colspan="5">Цена билета</th>
+            </tr>
+            {% for item in items %}
+            <tr>
+                <td>{{ item["flightNumber"] }}</td>
+                <td>{{ item["departurePoint"] }}</td>
+                <td>{{ item["arrivalPoint"] }}</td>
+                <td>{{ item["departureDate"] }} {{ item["departureTime"] }}</td>
+                <td>{{ item["arrivalDate"] }} {{ item["arrivalTime"] }}</td>
+                <td>{{ item["baseCost"] }} Р</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <h3> Запрос выполнен, результатов нет </h3>
+        {% endif %}
+        {% else %}
+        <ul>
+            <h3> Показать все сведения о рейсах, номера которых начинаются на  </h3>
+            <form method="POST" action="">
+                <input type="text" name="number" placeholder="Номер рейса">
+                <input type="submit" value="Выполнить запрос">
+            </form>
+        </ul>
+        {% endif %}
+        <li><a href="{{ url_for('blueprint_query.query') }}">Назад</a></li>
+    </main>
+
+</div>
+{% endblock %}
