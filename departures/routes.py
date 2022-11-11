@@ -24,3 +24,8 @@ def ticket_buy():
 	flightNumber = request.args.get('flightNumber')
 	baseCost = request.args.get('baseCost')
 	return render_template('ticketbuy.html', flightNumber=flightNumber, baseCost=baseCost)
+
+
+@blueprint_departures.route('/check', methods=['GET', 'POST'])
+def ticket_check():
+	return render_template('ticket_check.html')

@@ -13,7 +13,7 @@
         <ul>
             <li><a href="{{ url_for('blueprint_departures.get_departures') }}" {% block departures_active %}{% endblock
                    %}>Рейсы</a></li>
-            <li><a href="{{ url_for('blueprint_tickets.tickets') }}" {% block check_active %}{% endblock %}>Проверка билетов</a></li>
+            <li><a href="{{ url_for('blueprint_departures.ticket_check') }}" {% block check_active %}{% endblock %}>Проверка билетов</a></li>
             {% if session['user_group'] == 'Admin' %}
             <li><a href="{{ url_for('blueprint_query.query') }}" {% block query_active %}{% endblock %}>Запросы</a></li>
             {% endif %}
